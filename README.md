@@ -36,7 +36,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 ---
 
-## GraphQL API Endpoints
+## SOme of GraphQL API Endpoints
 
 ### 1. Create Driver
 Mutation to create a new Driver.
