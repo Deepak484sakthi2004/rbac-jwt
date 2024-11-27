@@ -1,7 +1,7 @@
 
 # Ride Pooling Application {RBAC-JWT}
 
-A Spring Boot-based backend application for a ride-pooling platform (like bla bla cars). This platform provides features for users to register, log in, and choose roles (Driver or Passenger) based on their preferences. Drivers can post rides, and passengers can request rides. The system includes role-based authentication and session management using JWT tokens.
+A Spring Boot-based backend application for a ride-pooling platform (like bla bla cars). This platform provides features for users to register, log in, and choose roles (Driver or Passenger or Admin) based on their preferences. Drivers can post rides, and passengers can request rides. The system includes role-based authentication and session management using JWT tokens.
 
 ## Prerequisites
 
