@@ -1,0 +1,128 @@
+type Mutation{
+    #    createUser(createUserRequest : CreateUserRequest) :AuthenticationResponse
+    updateUser(createUserRequest : CreateUserRequest) : User
+    #    authenticate(authenticationRequest : AuthenticationRequest): AuthenticationResponse
+    deleteUser(email : String!): String
+    createDriver(createDriverRequest : CreateDriverRequest) : Driver
+    deleteDriver(email : String!):String
+    updateDriver(createDriverRequest : CreateDriverRequest) : Driver
+    createRide(createRideRequest: CreateRideRequest): Ride
+    addPassenger(RideId : Int , PassengerId : Int): String
+    createPassenger(email : String!,phoneNumber: String!) : Passenger
+    cancelRide(rideId: Int): String
+    createBookingRequest(rideId: Int!, passengerId: Int!): BookingRequest
+    acceptBookingRequest(bookingRequestId: Int!): BookingRequest
+    rejectBookingRequest(bookingRequestId: Int!): BookingRequest
+    deleteBookingRequest(bookingRequestId: Int!): String
+    createPassengerReview(passengerId: ID!, rating: Float!): PassengerReview
+    createDriverReview(driverId: ID!, rating: Float!): DriverReview
+}
+
+type PassengerReview {
+    id: ID!
+    passenger: Passenger!
+    rating: Float!
+}
+
+type DriverReview {
+    id: ID!
+    driver: Driver!
+    rating: Float!
+}
+input AuthenticationRequest{
+    email:String!
+    password:String!
+}
+type AuthenticationResponse{
+    token:String
+}
+input CreateUserRequest{
+    name: String
+    email:String
+    password:String
+    roles:[Role]
+    createdAt:String
+    updatedAt:String
+}
+
+type Driver {
+    driverId: Int
+    user: User
+    phoneNumber:String
+    rating:Float
+    licenseNumber: String
+    vehicleDetails: String
+    vehicleRegistrationNumber: String
+    createdAt: String
+    updatedAt: String
+}
+input CreateDriverRequest {
+    userEmail: String!
+    phoneNumber:String!
+    licenseNumber: String!
+    vehicleDetails: String
+    vehicleRegistrationNumber: String!
+}
+
+input CreateRideRequest {
+    driverUserId: Int!
+    origin: String!
+    destination: String!
+    departureTime: String!  # Use ISO 8601 format for date-time
+    arrivalTime: String!    # Use ISO 8601 format for date-time
+    availableSeats: Int!
+    totalSeats: Int!
+    vehicleType: String!
+    rideStatus: RideStatus!
+    passengerIds: [Int!]   # List of passenger IDs
+}
+
+enum RideStatus {
+    PENDING
+    IN_PROGRESS
+    COMPLETED
+    CANCELLED
+}
+
+type Ride {
+    rideId: Int!
+    driver: Driver!  # This will fetch the Driver object
+    origin: String!
+    destination: String!
+    departureTime: String!  # Use ISO 8601 format for date-time
+    arrivalTime: String!    # Use ISO 8601 format for date-time
+    availableSeats: Int!
+    totalSeats: Int!
+    vehicleType: String!
+    rideStatus: RideStatus!
+    passengers:[Passenger]# List of Passenger objects
+    createdAt: String!        # Use ISO 8601 format for date-time
+    updatedAt: String!        # Use ISO 8601 format for date-time
+}
+type Passenger {
+    passengerId: Int!
+    user: User!                # This will fetch the User object associated with the Passenger
+    name: String!
+    email: String!
+    rating:Float
+    phoneNumber: String!
+    rides: [Ride]              # List of Ride objects associated with the Passenger
+}
+
+type BookingRequest {
+    bookingRequestId: Int!
+    rideId: Int!
+    passengerId: Int!
+    status: BookingStatus!
+    requestedAt: String!
+    updatedAt: String!
+}
+
+enum BookingStatus {
+    PENDING
+    ACCEPTED
+    REJECTED
+}
+
+
+

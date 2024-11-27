@@ -1,0 +1,21 @@
+type Query{
+    getUser(email: String) : User
+    getDriver(email: String): Driver
+    getAllRides : [Ride!]!
+    getRidesByStatus(status: RideStatus!): [Ride!]!
+    getBookingStatus(BookingRequestId: Int!) : BookingStatus
+    demo : String
+}
+type User{
+    userId : Int
+    name: String
+    email:String
+    password:String
+    roles:[Role]
+    createdAt:String
+    updatedAt:String
+}
+enum Role{
+    DRIVER,
+    PASSENGER
+}
