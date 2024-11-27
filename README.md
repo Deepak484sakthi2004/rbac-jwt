@@ -49,7 +49,7 @@ mutation CreateDriver {
       userEmail: "deepak@driver.com"
       phoneNumber: "9876543210"
       licenseNumber: "DL12345678"
-      vehicleDetails: "Toyota Innova, White, 2022 Model"
+      vehicleDetails: "Mustang, Black, 2022 Model"
       vehicleRegistrationNumber: "KA01AB1234"
     }
   ) {
@@ -113,14 +113,14 @@ pass these below as GRAPHQL PARAMETERS:
 ```json
 {
   "createRideRequest": {
-    "driverUserId": 123,
+    "driverUserId": 1,
     "origin": "Chennai",
     "destination": "Bangalore",
     "departureTime": "2024-12-01T9:00:00Z",
     "arrivalTime": "2024-12-01T14:00:00Z",
     "availableSeats": 3,
     "totalSeats": 4,
-    "vehicleType": "Sedan",
+    "vehicleType": "Mustang",
     "rideStatus": "PENDING",
     "passengerIds": []
   }
