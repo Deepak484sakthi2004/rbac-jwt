@@ -45,10 +45,13 @@ public class AppConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+// use the redos in localhost, and no pwd required 
+
     @Bean
     public JedisConnectionFactory connectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("redis-13499.c57.us-east-1-4.ec2.redns.redis-cloud.com");
+        redisStandaloneConfiguration.setHostName("redis-13499.c57.us-east-1-4.ec2.redns.redis-cloud.com"); // localhost 
         redisStandaloneConfiguration.setPort(13499);
         redisStandaloneConfiguration.setPassword("QN7Us5sRZqktwcQrAA8ZtuDRDEjFmYnH"); // No password
         return new JedisConnectionFactory(redisStandaloneConfiguration);
