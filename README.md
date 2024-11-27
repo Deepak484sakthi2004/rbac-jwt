@@ -23,16 +23,17 @@ Before you begin, ensure you have the following installed on your machine:
 ### Step 2: Run the Application
 1. Open Postman/Altair to access the endpoints (GraphQL is used as the API format).
 2. Create a new POST request to the endpoint `http://localhost:8080/auth/register` with the following body:
+   the roles are ADMIN, DRIVER, PASSENGER
    ```json
    {
      "name": "deepak",
      "email": "deepak@driver.com",
      "password": "12345",
-     "roles": ["DRIVER"]
+     "roles": ["DRIVER","PASSENGER"]
    }
    ```
    It responds with a Bearer authentication key. Save this key in the Bearer Authentication section under the Authorization tab in Postman/Altair.
-3. Now hit the endpoint `http://localhost:8080/graphql`, set the body type to GraphQL, and use the provided mutations and queries for various operations.
+4. Now hit the endpoint `http://localhost:8080/graphql`, set the body type to GraphQL, and use the provided mutations and queries for various operations.
 
 ---
 
