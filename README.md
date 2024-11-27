@@ -28,7 +28,51 @@ Before you begin, ensure you have the following installed on your machine:
               "password": "12345",
               "roles":["DRIVER"]
        `     }
-    It responds a Bearer auth key, save it in the Bearer Authenication under Authorisation section in postman/ altair
-3. Now hit the endpoint  `http://localhost:8080/graphql` and choose the body as graphql
+      
+  It responds a Bearer auth key, save it in the Bearer Authenication under Authorisation section in postman/ altair
+3. Now hit the endpoint  `http://localhost:8080/graphql` and choose the body as graphql, use the below body to req/res!
+
+
+   1. [Create Driver](#create-driver)
+   2. [Create Passenger](#create-passenger)
+   3. [Create Ride](#create-ride)
+   4. [Accept Booking Request](#accept-booking-request)
+   5. [Reject Booking Request](#reject-booking-request)
+   6. [Create Passenger Review](#create-passenger-review)
+   7. [Get Driver](#get-driver)
+   
+   ---
+   
+   ### 1. Create Driver
+   Mutation to create a new Driver
+   
+   ```graphql
+   mutation CreateDriver {
+           createDriver(
+             createDriverRequest: {
+               userEmail: "deepak@driver.com"
+               phoneNumber: "9876543210"
+               licenseNumber: "DL12345678"
+               vehicleDetails: "Toyota Innova, White, 2022 Model"
+               vehicleRegistrationNumber: "KA01AB1234"
+             }
+           ) {
+             driverId
+             user {
+               userId
+               name
+               email
+               roles
+             }
+             phoneNumber
+             rating
+             licenseNumber
+             vehicleDetails
+             vehicleRegistrationNumber
+             createdAt
+             updatedAt
+           }
+         } ```
+
 
 
